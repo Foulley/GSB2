@@ -2,6 +2,8 @@ package panel;
 
 import javax.swing.*;
 
+import modele.consulter.ModeleConsulter;
+
 import controleurs.Menu;
 
 public class Panel_Connecter extends JPanel{

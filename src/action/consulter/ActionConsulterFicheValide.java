@@ -1,8 +1,8 @@
 package action.consulter;
 
-import MenuBar;
-import PanelConsultation;
 
+
+import java.awt.MenuBar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -34,7 +34,7 @@ public class ActionConsulterFicheValide implements ActionListener{
 		
 		this.vue.remove(this.vue.getContentPane());
 		this.vue.setContentPane(new Panel_Fiche_Valider(this.lesFichesFraisValider));
-		this.vue.setJMenuBar(new MenuBar(this.vue));
+		this.vue.setJMenuBar(new Menu(this.vue));
 		this.vue.revalidate();		
 		
 	}

@@ -23,7 +23,7 @@ public class ActionAnnulerLaFiche implements ActionListener{
 		this.vue = vue;
 	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		
 		//Clicker sur le btn Annuler
