@@ -131,8 +131,7 @@ private static Connection connexion ;
 					+"FROM visiteur V, fichefrais F, fraisforfait FF, etat E"
 					+"WHERE V.id = F.idVisiteur AND E.id = F.idEtat"
 					+"AND F.idEtat = 'VA'";
-			statement = connexion.prepareStatement(req);
-			rs = statement.executeQuery();
+			rs = st.executeQuery(req);
 			
 			while(rs.next()/*vrai*/){
 				

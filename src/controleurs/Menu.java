@@ -58,7 +58,7 @@ public class Menu extends JMenuBar{
 		this.remboursementFicheFrais.addActionListener(new ActionRemboursementFicheFrais(this.vue));
 				//consulterFicheMn
 		this.consulterFicheValide = new JMenuItem("Fiche Validé");
-		this.consulterFicheValide.addActionListener(new ActionConsulterFicheValide(this.vue, ModeleConsulter.getLesFichesFraisValider()));
+		this.consulterFicheValide.addActionListener(new ActionConsulterFicheValide(this.vue));
 		this.consulterFicheRembourser = new JMenuItem("Fiche Remboursé");
 		this.consulterFicheRembourser.addActionListener(new ActionConsulterFicheRembourser(this.vue));
 		this.consulterFicheCloture = new JMenuItem("Fiche Cloturé");

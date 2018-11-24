@@ -22,7 +22,7 @@ public class ActionConsulterFicheValide implements ActionListener{
 	private ArrayList<FicheFrais> lesFichesFraisValider;
 	
 	/* CONSTRUCTEURS */
-	public ActionConsulterFicheValide(Vue uneVue, ArrayList<FicheFrais> lesFichesFraisValider){
+	public ActionConsulterFicheValide(Vue uneVue){
 		this.vue = uneVue;
 		this.lesFichesFraisValider = new ArrayList<FicheFrais>();
 	}
