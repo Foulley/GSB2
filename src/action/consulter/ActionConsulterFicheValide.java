@@ -33,7 +33,7 @@ public class ActionConsulterFicheValide implements ActionListener{
 		this.lesFichesFraisValider = ModeleConsulter.getLesFichesFraisValider();
 		
 		this.vue.remove(this.vue.getContentPane());
-		this.vue.setContentPane(new Panel_Fiche_Valider(this.lesFichesFraisValider));
+		this.vue.add(new Panel_Fiche_Valider(this.lesFichesFraisValider));
 		this.vue.setJMenuBar(new Menu(this.vue));
 		this.vue.revalidate();		
 		
