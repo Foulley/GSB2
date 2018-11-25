@@ -3,9 +3,11 @@ package action.validation;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 import javax.swing.JLabel;
 
+import modele.validation.ModeleValider;
 import panel.Vue;
 import panel.recherche.Panel_Validation_Recherche;
 
@@ -16,15 +18,26 @@ public class ActionValiderLaFiche implements ActionListener{
 	private JLabel lblMessage;
 		//Vue
 	private Vue vue;
-	
+		//Parametre à changer
+	private String justificatif;
+	private float montant;
+	private String mois;
+	private String id;
+			
 	//Constructeur
-	public ActionValiderLaFiche(Vue vue ,JLabel lblMsg){
+	public ActionValiderLaFiche(Vue vue ,JLabel lblMsg, String justificatif, float montant, String mois, String id){
 		this.lblMessage = lblMsg;
 		this.vue = vue;
+		this.justificatif = justificatif;
+		this.montant = montant;
+		this.mois = mois;
+		this.id = id;
 	}
 	
 	
 	public void actionPerformed(ActionEvent e) {
+		
+		ModeleValider.validerLaFiche(this.justificatif, this.montant, this.mois, this.id);
 		
 		//Action btn valider
 		this.lblMessage.setText("Validé");

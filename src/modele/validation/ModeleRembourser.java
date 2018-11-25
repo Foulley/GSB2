@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -513,4 +515,34 @@ public class ModeleRembourser {
 		deconnexionBD();
 		return nb;
 	}
+	/* *************************************************************************************************************** */
+	
+	
+	
+	/* *************************************************************************************************************** */
+	//Validation de la fiche
+	/* *************************************************************************************************************** */
+
+		//validerFiche
+		public static void rembourserLaFiche(String mois, String id) {
+			connexionBD();
+			String idEtat = "RB";
+			String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			
+			try {
+				pst = connexion.prepareStatement("UPDATE fichefrais set nbjustificatifs = ?, montantvalide = ?, datemodif = ?, idetat = ? WHERE mois = ? AND idvisiteur = ?");
+				pst.setString(1, date);
+				pst.setString(2, idEtat);
+				pst.setString(3, mois);
+				pst.setString(4, id);
+				
+				pst.executeUpdate();
+			}
+			catch(SQLException e) {
+				System.out.println("Erreur : \n" + e);
+			}
+			
+			deconnexionBD();
+		}
+	/* *************************************************************************************************************** */	
 }

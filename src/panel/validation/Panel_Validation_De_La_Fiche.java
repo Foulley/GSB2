@@ -111,13 +111,17 @@ public class Panel_Validation_De_La_Fiche extends JPanel{
 		this.lblMontantTotalForfais = new JLabel(montantTotal);
 		
 			//Hors forfait
-		this.lblHorsForfait = new JLabel("Descriptif des éléments HorsForfait -" + ModeleValider.getNbJustif(unMois, id) + " justificatif(s) reçus.");
+		String justificatif = ModeleValider.getNbJustif(unMois, id);
+		this.lblHorsForfait = new JLabel("Descriptif des éléments HorsForfait -" + justificatif + " justificatif(s) reçus.");
 		this.lblDateHorsForfait = new JLabel("Date");
 		this.lblLibelleHorsForfait = new JLabel("Libellé");
 		this.lblJustifHorsForfait = new JLabel("Justificatif");
 		this.lblMontantHorsForfait = new JLabel("Montant");
 		String montantTotalHF = String.valueOf(ModeleValider.getMontantTotalHF(unMois, id));
 		this.lblMontantTotalHF = new JLabel(montantTotalHF);
+		
+			//Montant des deux
+		float montantFull = ModeleValider.getMontantTotalHF(unMois, id) + ModeleValider.getMontantTotalForfait(unMois, id);
 		//Declaration
 			//Vue
 		this.vue = uneVue;
@@ -131,7 +135,7 @@ public class Panel_Validation_De_La_Fiche extends JPanel{
 		
 			//Btn
 		this.btnValider = new JButton("Valider");
-		this.btnValider.addActionListener(new ActionValiderLaFiche(this.vue, this.lblMsg));
+		this.btnValider.addActionListener(new ActionValiderLaFiche(this.vue, this.lblMsg, justificatif, montantFull, unMois, id));
 		this.btnAnnuler = new JButton("Annuler");
 		this.btnAnnuler.addActionListener(new ActionAnnulerLaFiche(this.vue, this.lblMsg));
 		

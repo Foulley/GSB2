@@ -10,6 +10,7 @@ import panel.Vue;
 import panel.recherche.Panel_Remboursement_Recherche;
 import panel.recherche.Panel_Validation_Recherche;
 import controleurs.Menu;
+import modele.validation.ModeleRembourser;
 
 public class ActionRembourserLaFiche implements ActionListener{
 
@@ -18,15 +19,22 @@ public class ActionRembourserLaFiche implements ActionListener{
 	private JLabel lblMessage;
 		//Vue
 	private Vue vue;
+		//Parametre à changer
+	private String mois;
+	private String id;	
 	
 	//Constructeur
-	public ActionRembourserLaFiche(Vue vue ,JLabel lblMsg){
+	public ActionRembourserLaFiche(Vue vue ,JLabel lblMsg, String mois, String id){
 		this.lblMessage = lblMsg;
 		this.vue = vue;
+		this.mois = mois;
+		this.id = id;
 	}
 	
 	
 	public void actionPerformed(ActionEvent e) {
+		
+		ModeleRembourser.rembourserLaFiche(this.mois, this.id);
 		
 		//Action btn valider
 		this.lblMessage.setText("Remboursé");

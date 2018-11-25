@@ -110,7 +110,8 @@ public class Panel_Remboursement_De_La_Fiche extends JPanel{
 		this.lblMontantTotalForfais = new JLabel(montantTotal);
 		
 			//Hors forfait
-		this.lblHorsForfait = new JLabel("Descriptif des éléments HorsForfait -" + ModeleRembourser.getNbJustif(unMois, id) + " justificatif(s) reçus.");
+		String justificatif = ModeleRembourser.getNbJustif(unMois, id);
+		this.lblHorsForfait = new JLabel("Descriptif des éléments HorsForfait -" + justificatif + " justificatif(s) reçus.");
 		this.lblDateHorsForfait = new JLabel("Date");
 		this.lblLibelleHorsForfait = new JLabel("Libellé");
 		this.lblJustifHorsForfait = new JLabel("Justificatif");
@@ -131,7 +132,7 @@ public class Panel_Remboursement_De_La_Fiche extends JPanel{
 		
 			//Btn
 		this.btnValider = new JButton("Valider");
-		this.btnValider.addActionListener(new ActionRembourserLaFiche(this.vue, this.lblMsg));
+		this.btnValider.addActionListener(new ActionRembourserLaFiche(this.vue, this.lblMsg, unMois, id));
 		this.btnAnnuler = new JButton("Annuler");
 		this.btnAnnuler.addActionListener(new ActionAnnulerRembourserLaFiche(this.vue, this.lblMsg));
 		
