@@ -5,31 +5,30 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 import modele.consulter.ModeleConsulter;
-
 import classes.FicheFrais;
 import controleurs.Menu;
 import panel.Vue;
-import panel.consulter.Panel_Fiche_Valider;
+import panel.consulter.Panel_Fiche_En_Cours_De_Validation;
 
-public class ActionConsulterFicheValide implements ActionListener{
+
+public class ActionConsulterFicheCoursValidation implements ActionListener{
 
 	/* ATTRIBUTS PRIVEES */
 	private panel.Vue vue;
-	private ArrayList<FicheFrais> lesFichesFraisValider;
+	private ArrayList<FicheFrais> lesFichesFraisCoursValidation;
 	
 	/* CONSTRUCTEURS */
-	public ActionConsulterFicheValide(Vue uneVue){
+	public ActionConsulterFicheCoursValidation(Vue uneVue){
 		this.vue = uneVue;
-		//this.lesFichesFraisValider = new ArrayList<FicheFrais>();
 	}
 
 	
 	public void actionPerformed(ActionEvent e) {
 		//Recupere la liste au travers du modele 
-		this.lesFichesFraisValider = ModeleConsulter.getLesFichesFraisValider();
+		this.lesFichesFraisCoursValidation = ModeleConsulter.getLesFichesFraisCoursValidation();
 		
 		this.vue.remove(this.vue.getContentPane());
-		this.vue.setContentPane(new Panel_Fiche_Valider(this.lesFichesFraisValider));
+		this.vue.setContentPane(new Panel_Fiche_En_Cours_De_Validation(this.lesFichesFraisCoursValidation));
 		this.vue.setJMenuBar(new Menu(this.vue));
 		this.vue.revalidate();		
 		
