@@ -35,7 +35,7 @@ public class Panel_Fiche_Rembourser extends JPanel{
 		//GridBagLayout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-				
+		c.fill = GridBagConstraints.BOTH;		
 		//Police
 		Font font = new Font("Calibri", Font.BOLD,20);
 				
@@ -83,27 +83,27 @@ public class Panel_Fiche_Rembourser extends JPanel{
 		c.gridy = 0;
 		c.gridwidth = 2;
 		c.insets = new Insets(6,6,6,6);
-		this.add(lblMessage, c);
+		this.add(this.lblMessage, c);
 					
 			//ScrollPane
 		c.gridx = 0;
 		c.gridy = 1;
 		c.insets = new Insets(6,6,6,6);
-		this.add(scroll, c);
+		this.add(this.scroll, c);
 			
 			//JButton
 		c.gridx = 0;
 		c.gridy = 2;
-		this.add(btnConsulter, c);
+		this.add(this.btnConsulter, c);
 		
 			//Listes
 		c.gridx = 0;
 		c.gridy = 3;
-		this.add(this.lstMois);
+		this.add(this.lstMois, c);
 		
 		c.gridx = 1;
 		c.gridy = 3;
-		this.add(lstOrdre);
+		this.add(this.lstOrdre, c);
 			
 			}	
 		}
