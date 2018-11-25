@@ -126,10 +126,10 @@ private static Connection connexion ;
 		int nbJustificatif;
 		
 		try{
-			st = connexion.createStatement();
+			//st = connexion.createStatement();
 			String req ="SELECT nom, prenom, mois, montantValide, dateModif, nbJustificatifs "
-					+"FROM visiteur V, fichefrais F, fraisforfait FF, etat E"
-					+"WHERE V.id = F.idVisiteur AND E.id = F.idEtat"
+					+"FROM visiteur V, fichefrais F, fraisforfait FF, etat E "
+					+"WHERE V.id = F.idVisiteur AND E.id = F.idEtat "
 					+"AND F.idEtat = 'VA'";
 			rs = st.executeQuery(req);
 			

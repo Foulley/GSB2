@@ -24,7 +24,7 @@ public class ActionConsulterFicheValide implements ActionListener{
 	/* CONSTRUCTEURS */
 	public ActionConsulterFicheValide(Vue uneVue){
 		this.vue = uneVue;
-		this.lesFichesFraisValider = new ArrayList<FicheFrais>();
+		//this.lesFichesFraisValider = new ArrayList<FicheFrais>();
 	}
 
 	
