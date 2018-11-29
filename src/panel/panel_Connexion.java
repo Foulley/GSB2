@@ -48,7 +48,7 @@ public class panel_Connexion extends JPanel{
 		
 			//Boutons
 		this.btnSeConnecter = new JButton("Se Connecter");
-		this.btnSeConnecter.addActionListener(new ActionConnexion(this.vue, this.lblErreur));
+		this.btnSeConnecter.addActionListener(new ActionConnexion(this.vue, this.lblErreur, this.jtfLogin, this.jpfMdp));
 		this.btnExit = new JButton("Exit");
 		this.btnExit.addActionListener(new ActionExit(this.vue));
 		

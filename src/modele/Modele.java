@@ -14,6 +14,9 @@ import classes.Visiteur;
 import panel.Vue;
 import classes.Visiteur;
 
+import java.security.MessageDigest;
+import java.math.BigInteger;
+
 public class Modele {
 
 	//attribut privé
@@ -53,6 +56,22 @@ private static Connection connexion ;
 	}
 	
 	
+	//sha1 décrypter mdp
+	public static String decrypterMdp (String mdp) {
+		String sha1 = "";
+		try {
+			MessageDigest cryptage = MessageDigest.getInstance("SHA-1");
+			cryptage.reset();
+			cryptage.update(mdp.getBytes("utf8"));
+			sha1 = String.format("%040x", new BigInteger(1, cryptage.digest()));
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		return sha1;
+	}
+	
+	
 	//connexionSession
 	public static boolean connexionSession(String mdp, char [] unMdp ,String login, Vue uneVue){
 		boolean result = false;
@@ -62,10 +81,11 @@ private static Connection connexion ;
 		Statement st;
 		ResultSet rs;
 		String strMdp = "";
-		for (int i = 0; i < mdp.length() ; i = i + 1){
+		for (int i = 0; i < mdp.length(); i = i + 1){
 			strMdp = strMdp + unMdp[i];
 		}
 		if(mdp == strMdp){
+			decrypterMdp(strMdp);
 			result = true;
 		}
 		try {
