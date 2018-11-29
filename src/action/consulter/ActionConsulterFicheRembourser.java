@@ -28,7 +28,7 @@ public class ActionConsulterFicheRembourser implements ActionListener{
 		this.lesFichesFraisRembourser = ModeleConsulter.getLesFichesFraisRembourser();
 		
 		this.vue.remove(this.vue.getContentPane());
-		this.vue.setContentPane(new Panel_Fiche_Rembourser(this.lesFichesFraisRembourser));
+		this.vue.setContentPane(new Panel_Fiche_Rembourser(this.vue, this.lesFichesFraisRembourser));
 		this.vue.setJMenuBar(new Menu(this.vue));
 		this.vue.revalidate();		
 		

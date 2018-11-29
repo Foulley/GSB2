@@ -1,18 +1,26 @@
 package panel.consulter;
 
+import action.consulter.ActionConsulterDetailFicheRembourser;
+import action.consulter.ActionConsulterFicheRembourser;
 import classes.FicheFrais;
 
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
+import panel.Vue;
 
 
-public class Panel_Fiche_Rembourser extends JPanel{
+
+public class Panel_Fiche_Rembourser extends JPanel implements FocusListener{
 	
 	/*ATTRIBUTS PRIVES */
 		//Labels
@@ -29,9 +37,14 @@ public class Panel_Fiche_Rembourser extends JPanel{
 	private JComboBox lstOrdre;
 	private JComboBox lstMois;
 	
+		//Vue
+	private Vue vue;
+	
 	
 	/* CONSTRUCTEUR */
-	public Panel_Fiche_Rembourser(ArrayList<FicheFrais> lesFichesFraisRembourser){
+	public Panel_Fiche_Rembourser(Vue vue, ArrayList<FicheFrais> lesFichesFraisRembourser){
+		this.vue = vue;
+		
 		//GridBagLayout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -62,17 +75,18 @@ public class Panel_Fiche_Rembourser extends JPanel{
 			data[this.i][4] = uneFiche.getDateModif();
 			data[this.i][5] = uneFiche.getNbJustificatifs();
 			this.i = this.i+1;
-		}
-				
+		}		
+		
 		//Instanciation du tableau titre et des cellules dans le JTable
 		table = new JTable(data, title);
-			
+		this.table.addFocusListener(this);
 		//Pour pouvoir defiler si trop grand nombre d'avions par exemple
 		scroll = new JScrollPane(table);
 		
+		//nom - mois
+		
 		//Instanciation du bouton et ajout de l'action listener au btnConsulter
 		this.btnConsulter = new JButton ("Consulter");
-		
 		//Instanciation des listes lstOrdre et Mois
 		this.lstMois = new JComboBox(/*Modele.getLesMois()*/);
 		this.lstOrdre = new JComboBox(/*Modele.getLesVisiteurs()*/);
@@ -96,6 +110,7 @@ public class Panel_Fiche_Rembourser extends JPanel{
 		c.gridy = 2;
 		c.gridwidth = 1;
 		this.add(this.btnConsulter, c);
+		
 		c.fill = GridBagConstraints.EAST;		
 			//Listes
 		c.gridx = 3;
@@ -108,7 +123,23 @@ public class Panel_Fiche_Rembourser extends JPanel{
 		c.gridwidth = 1;
 		this.add(this.lstOrdre, c);
 			
-			}	
+			}
+
+
+	public void focusGained(FocusEvent arg0) {
+		// TODO Auto-generated method stub
+		int val = this.table.getSelectedRow();
+	//	System.out.println(val);
+		this.revalidate();
+	//	this.btnConsulter.removeActionListener(new ActionConsulterDetailFicheRembourser(this.vue, val));
+		this.btnConsulter.addActionListener(new ActionConsulterDetailFicheRembourser(this.vue, val));
+	}
+
+
+	public void focusLost(FocusEvent arg0) {
+		// TODO Auto-generated method stub
+	}
+	
 		}
 
 
