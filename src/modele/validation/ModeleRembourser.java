@@ -33,9 +33,9 @@ public class ModeleRembourser {
 	public static void connexionBD() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			//	connexion = DriverManager.getConnection("jdbc:mysql://172.16.203.100/2018foulley", "tfoulley", "123456");
+				connexion = DriverManager.getConnection("jdbc:mysql://172.16.203.100/2018foulley", "tfoulley", "123456");
 			//	connexion = DriverManager.getConnection("jdbc:mysql://172.16.252.10/slam2", "slam2", "GiPo94h");
-			connexion = DriverManager.getConnection("jdbc:mysql://localhost/gsbv2", "root", "");
+			// connexion = DriverManager.getConnection("jdbc:mysql://localhost/gsbv2", "root", "");
 			st = connexion.createStatement();
 		} 
 		catch (ClassNotFoundException erreur) {
@@ -530,7 +530,7 @@ public class ModeleRembourser {
 			String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			
 			try {
-				pst = connexion.prepareStatement("UPDATE fichefrais set nbjustificatifs = ?, montantvalide = ?, datemodif = ?, idetat = ? WHERE mois = ? AND idvisiteur = ?");
+				pst = connexion.prepareStatement("UPDATE fichefrais set datemodif = ?, idetat = ? WHERE mois = ? AND idvisiteur = ?");
 				pst.setString(1, date);
 				pst.setString(2, idEtat);
 				pst.setString(3, mois);
