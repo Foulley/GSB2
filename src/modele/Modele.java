@@ -28,7 +28,7 @@ private static Connection connexion ;
 	
 	//méthode publiques statiques connexion
 	public static void connexionBD() {
-		Connection connexion = null;
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connexion = DriverManager.getConnection("jdbc:mysql://172.16.203.100/2018foulley", "tfoulley", "123456");
@@ -57,7 +57,7 @@ private static Connection connexion ;
 	
 	
 	//sha1 décrypter mdp
-	public static String decrypterMdp (String mdp) {
+/*	public static String decrypterMdp (String mdp) {
 		String sha1 = "";
 		try {
 			MessageDigest cryptage = MessageDigest.getInstance("SHA-1");
@@ -69,28 +69,30 @@ private static Connection connexion ;
 			e.printStackTrace();
 		}
 		return sha1;
-	}
+	}*/
 	
 	
 	//connexionSession
-	public static boolean connexionSession(String mdp, char [] unMdp ,String login, Vue uneVue){
+	public static boolean connexionSession(char [] unMdp ,String login, Vue uneVue){
 		boolean result = false;
 		connexionBD();
 		String sql;
 		sql = "Select mdp From visiteur Where login ='" + login + " ' ";
-		Statement st;
-		ResultSet rs;
 		String strMdp = "";
-		for (int i = 0; i < mdp.length(); i = i + 1){
+		
+		try {
+		for (int i = 0; i < unMdp.length; i = i + 1){
 			strMdp = strMdp + unMdp[i];
 		}
-		if(mdp == strMdp){
-			decrypterMdp(strMdp);
+		st = connexion.createStatement();
+		rs = st.executeQuery(sql);
+		rs.next();
+		
+		if(strMdp.equals(rs.getString(1))){
+		/*	decrypterMdp(strMdp);*/
 			result = true;
 		}
-		try {
-			st = connexion.createStatement();
-			rs = st.executeQuery(sql);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
