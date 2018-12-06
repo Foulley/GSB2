@@ -20,7 +20,7 @@ public class ActionConnexion implements ActionListener{
 	private JLabel lblErreur;
 	private JTextField jtfLogin;
 	private JPasswordField jpfMdp;
-	
+
 	/* CONSTRUCTEURS */
 	public ActionConnexion(Vue uneVue, JLabel lblErreur, JTextField unLogin, JPasswordField unMdp){
 		this.vue = uneVue;
@@ -28,14 +28,13 @@ public class ActionConnexion implements ActionListener{
 		this.jtfLogin = unLogin;
 		this.jpfMdp = unMdp;
 	}
-	
+
 	/* ACTION */
-	
+
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
-		//vérifie la connexion utilisateur
 
+		//vérifie la connexion utilisateur
 		if(Modele.connexionSession(jpfMdp.getPassword(), jtfLogin.getText(), vue)){
 			//vide la fenetre
 			this.vue.remove(this.vue.getContentPane());
@@ -45,25 +44,25 @@ public class ActionConnexion implements ActionListener{
 			this.vue.setJMenuBar(new Menu(this.vue));
 			//rafraichit la page
 			this.vue.revalidate();
-	//	}
-	//	else {
+			//	}
+			//	else {
 			this.lblErreur.setText("Erreur Identifiant non valide");
 			this.lblErreur.setForeground(Color.WHITE);
 			this.lblErreur.setBackground(Color.RED);
 			this.lblErreur.setOpaque(true);
-	//	}
-		
-		
-		
-		/*
-		this.vue.remove(this.vue.getContentPane());
-		
-		this.vue.setContentPane(new Panel_Connecter(this.vue));
-		
-		this.vue.setJMenuBar(new Menu(this.vue));
-		
-		this.vue.revalidate();
-		*/
-	}
+			//	}
 
+
+
+			/*
+		this.vue.remove(this.vue.getContentPane());
+
+		this.vue.setContentPane(new Panel_Connecter(this.vue));
+
+		this.vue.setJMenuBar(new Menu(this.vue));
+
+		this.vue.revalidate();
+			 */
+		}
+	}
 }
