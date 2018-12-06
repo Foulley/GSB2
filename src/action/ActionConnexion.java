@@ -35,6 +35,7 @@ public class ActionConnexion implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		//vérifie la connexion utilisateur
+
 		if(Modele.connexionSession(jpfMdp.getPassword(), jtfLogin.getText(), vue)){
 			//vide la fenetre
 			this.vue.remove(this.vue.getContentPane());
@@ -44,13 +45,13 @@ public class ActionConnexion implements ActionListener{
 			this.vue.setJMenuBar(new Menu(this.vue));
 			//rafraichit la page
 			this.vue.revalidate();
-		}
-		else {
+	//	}
+	//	else {
 			this.lblErreur.setText("Erreur Identifiant non valide");
 			this.lblErreur.setForeground(Color.WHITE);
 			this.lblErreur.setBackground(Color.RED);
 			this.lblErreur.setOpaque(true);
-		}
+	//	}
 		
 		
 		

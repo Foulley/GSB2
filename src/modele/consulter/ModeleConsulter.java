@@ -23,7 +23,7 @@ public class ModeleConsulter {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connexion = DriverManager.getConnection("jdbc:mysql://172.16.203.100/2018foulley", "tfoulley", "123456");
-			//connexion = DriverManager.getConnection("jdbc:mysql://localhost/gsbv2", "root", "");
+		//	connexion = DriverManager.getConnection("jdbc:mysql://localhost/gsbv2", "root", "");
 			st = connexion.createStatement();
 		} 
 		catch (ClassNotFoundException erreur) {
